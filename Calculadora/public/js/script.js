@@ -1,5 +1,7 @@
 // Variable para que se guarde el número que se va a escribir
 let numeroEscrito = "";
+let numero1 = "";
+let operacion = "";
 
 //Cuando se presione un número se llama a esta función
 function mostrarEnPantalla(valor) {
@@ -12,4 +14,13 @@ function limpiarPantalla() {
     numeroEscrito = ""; // Limpiamos la variable que tiene el numero
 
     document.getElementById("display").value = ""; // Vaciamos el numero de la pantalla
+}
+
+// Esta función se activa cuando se presione +, -, *, /
+function seleccionarOperacion(simbolo) {
+    numero1 = numeroEscrito; // Se guarda el primer numero
+    operacion = simbolo; // Se guarda la operación
+    document.getElementById("display").value = ""; // Se limpia la pantalla para poder ingresar el segundo numero
+    numeroEscrito = ""; // Con esto se elimina la variable que guarda lo que se escribe
+    document.getElementById("operation-display").innerText = "Operacion: " + simbolo; // Se muestra la operación en un texto
 }
