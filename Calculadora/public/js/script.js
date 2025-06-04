@@ -24,3 +24,37 @@ function seleccionarOperacion(simbolo) {
     numeroEscrito = ""; // Con esto se elimina la variable que guarda lo que se escribe
     document.getElementById("operation-display").innerText = "Operacion: " + simbolo; // Se muestra la operación en un texto
 }
+
+function calcularResultado() {
+    // Convertimos los dos numeros a numero real, por si se ingresa decimales
+    let num1 = parseFloat(numero1);
+    let num2 = parseFloat(numeroEscrito);
+    let resultado = 0;
+
+    //Aqui se revisa que operación se eligió y se hace el cálculo
+    if (operacion === "+") {
+        resultado = num1 + num2;
+    } else if (operacion === "-") {
+        resultado = num1 - num2;
+    } else if (operacion === "*") {
+        resultado = num1 * num2;
+    } else if (operacion === "/") {
+        //Se evita que se divida por 0
+        if (num2 === 0) {
+            resultado = "No se puede dividir por 0";
+        } else {
+            resultado = num1 / num2;
+        }
+    }
+
+    //Mostramos el resultado en pantalla
+    document.getElementById("display").value = resultado;
+
+    // Eliminamos la operación mostrada
+    document.getElementById("operation-display").innerText = "";
+
+    //Reiniciamos todo para que se pueda volver a usar
+    numeroEscrito = "";
+    num1 = "";
+    operacion = "";
+}
